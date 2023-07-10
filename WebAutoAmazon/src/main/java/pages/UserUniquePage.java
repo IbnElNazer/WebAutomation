@@ -3,16 +3,20 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class UserUniquePage {
+public class UserUniquePage {//done
 
     private WebDriver driver;
-    private By userName = By.id("nav-link-accountList-nav-line-1");
+
+    private By TopPicksElement = By.className("_cDEzb_card-title_1EuRU");
 
     public UserUniquePage(WebDriver driver){
         this.driver = driver;
     }
 
-    public String getUserName(){
-        return driver.findElement(userName).getText();
+
+    public String getTopPicksElement(){
+        return driver.findElement(TopPicksElement).getText();
     }
+
+
 }

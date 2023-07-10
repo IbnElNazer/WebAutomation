@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.Message;
 
-public class LoginPage {
+public class LoginPage { //done
 
     private WebDriver driver;
     private By emailField= By.id("ap_email");
@@ -16,7 +16,7 @@ public class LoginPage {
     private  By invalidEmailMessage = By.className("a-list-item");
     private  By emptyPasswordMessage = By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[1]/div[2]/div/div");
     private  By emptyEmailMessage = By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div[1]/form/div/div/div/div[1]/div/div/div");
-    private By creatNewAccountButton= By.id("createAccountSubmit");
+
 
     public String getInvalidPasswordMessage() {
        String Message;
@@ -56,17 +56,16 @@ public class LoginPage {
     public void setPassword(String Password){
         driver.findElement(passwordField).sendKeys(Password);
     }
-    public UserUniquePage clickSubmitButton(){
-        driver.findElement(submitButton).click();
-        return new UserUniquePage(driver);
+    public HomePage clickSubmitButton(){
+        clickLink(submitButton);
+        return new HomePage(driver);
     }
 
-    public void clickCreateAccount(){
-        clickLink(creatNewAccountButton);
-    }
+
+
         private void clickLink(By element){
             driver.findElement(element).click();
         }
 
 
-   }
+}

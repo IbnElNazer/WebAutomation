@@ -1,42 +1,39 @@
-package login;
+package user;
 
 import base.BaseTests;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.annotations.Ignore;
+
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.UserUniquePage;
 
-import java.time.Duration;
+
 
 import static org.testng.Assert.*;
 
-public class LoginTests extends BaseTests {
+public class LoginTests extends BaseTests { //All OK
 
-    @Test
-    public void testSuccessfulLogin(){
+    @Test //OK
+    public void testSuccessfulLogin()  {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.setEmail("youngshark96@gmail.com");
+        loginPage.setEmail("salahtest96@gmail.com");
         loginPage.clickContinue();
-        loginPage.setPassword("a1k2o3n4");
-        UserUniquePage UserUniquePage1 = loginPage.clickSubmitButton();
-        assertTrue(UserUniquePage1.getUserName()
-                .contains("Salah"),"Good");
+        loginPage.setPassword("11223344aaAA!!");
+        HomePage HP =loginPage.clickSubmitButton();
+        assertTrue(HP.getUserName().contains("salah"));
     }
 
-
-    @Test
+    @Test //OK
     public void testFailedLoginInvalidPassword()  {
         LoginPage loginPage = homePage.clickLoginButton();
         loginPage.setEmail("youngshark96@gmail.com");
         loginPage.clickContinue();
         loginPage.setPassword("swewq34");
-        UserUniquePage UserUniquePage1 = loginPage.clickSubmitButton();
+        loginPage.clickSubmitButton();
         assertEquals("Your password is incorrect",loginPage.getInvalidPasswordMessage());
     }
 
-    @Test
+    @Test //OK
     public void testFailedLoginInvalidEmail(){
         LoginPage loginPage = homePage.clickLoginButton();
         loginPage.setEmail("youngshark996@gmail.com");
@@ -45,31 +42,22 @@ public class LoginTests extends BaseTests {
     }
 
 
-    //Good
-    @Test
+    @Test //OK
     public void testFailedLoginEmptyPassword(){
         LoginPage loginPage = homePage.clickLoginButton();
         loginPage.setEmail("youngshark96@gmail.com");
         loginPage.clickContinue();
         loginPage.setPassword("");
-        UserUniquePage UserUniquePage1 = loginPage.clickSubmitButton();
+        loginPage.clickSubmitButton();
         assertEquals("Enter your password",loginPage.getEmptyPasswordMessage());
     }
 
-    //good
-    @Test
+    @Test //OK
     public void testFailedLoginEmptyEmail(){
         LoginPage loginPage = homePage.clickLoginButton();
         loginPage.clickContinue();
         System.out.println(loginPage.getEmptyEmailMessage());
-        assertEquals("We cannot find an account with that email address",loginPage.getEmptyEmailMessage());
-    }
-    @Test
-
-    public void testCreateNewUserAccount(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickCreateAccount();
-
+        assertEquals(loginPage.getEmptyEmailMessage(),"Enter your email or mobile phone number");
     }
 
 }

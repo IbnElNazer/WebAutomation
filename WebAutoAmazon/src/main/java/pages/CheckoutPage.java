@@ -8,33 +8,51 @@ public class CheckoutPage {
     public CheckoutPage(WebDriver driver){
         this.driver = driver;
     }
-    private By NameField = By.id("address-ui-widgets-enterAddressFullName");
-    private By PhoneField = By.id("address-ui-widgets-enterAddressPhoneNumber");
-    private By StreetField = By.id("address-ui-widgets-enterAddressLine1");
-    private By BuildingField = By.id("address-ui-widgets-enter-building-name-or-number");
-    private By GiftCardField = By.id("pp-agyLUl-58");
-    private By GiftCardButton = By.id("pp-agyLUl-59");
-    private By TotalPrice = By.xpath("/html/body/div[5]/div[1]/div/div[2]/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/table/tbody/tr[6]/td[2]");
-    private By CashonDelievery = By.id("pp-agyLUl-63");
-    private By SkipOffers = By.xpath("/html/body/div[5]/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[7]/div/div[3]/div[3]/div/div/div/div/div[3]/span");
-    private By ProductsNames = By.className("a-row breakword");
-    private By PlaceOrderBUtton=By.id("is-remove-os-pabt"); //e3ml list feha kol el elements eli fl cart 3shan ttcheck 3la el asami
+
+    private By TotalPrice = By.xpath("(//tr/td[contains(@class,'grand-total-price')])[2]");
+    private By ValuPayment = By.id("pp-1JH3tA-86");
+    private By Product1Name = By.xpath("(//div[@class=\"a-row breakword\"])[1]");
+    private By PlaceOrderBUtton=By.id("is-remove-os-pabt");
     private By EstimatedDeliveryDate = By.className("checkout-chewbacca-contract-promise-content display-inline-block");
     private By CheckoutTitle = By.tagName("h1");
+    private By ReviewOrderButton = By.id("spcViewButtonId");
+    private By SaveQuantitiesButton =By.xpath("//input[@name=\"continue-bottom\"]");
+    private By QtyOfProduct1 =By.id("(//*[@class=\"a-dropdown-prompt\"])[1]");
+    private By QtyOfProduct2 =By.id("(//*[@class=\"a-dropdown-prompt\"])[2]");
 
-
-    //dropmenu for country
-    //dropmenu for district
-
-
-    public String getCheckoutTitle (){
-       return driver.findElement(CheckoutTitle).getText();
+    public String getCheckoutTitle (){return driver.findElement(CheckoutTitle).getText();
     }
+    public String getEstimatedDeliveryDate (){
+        return driver.findElement(EstimatedDeliveryDate).getText();
+    }
+    public String getProduct1Name (){
+        return driver.findElement(Product1Name).getText();
+    }
+    public int getQtyOfProduct1 (){
+        return Integer.parseInt( driver.findElement(QtyOfProduct1).getText());
+    }
+    public int geTotalPrice (){
+        return Integer.parseInt( driver.findElement(TotalPrice).getText());
+    }
+    public int getQtyOfProduct2 (){
+        return Integer.parseInt( driver.findElement(QtyOfProduct2).getText());
+    }
+    public void clickSaveQuantitiesButton(){
+        clickLink(SaveQuantitiesButton);
+    }
+
+    public void clickReviewOrderButton(){
+        clickLink(ReviewOrderButton);
+    }
+
+    public void clickValuPayment(){
+        clickLink(ValuPayment);
+    }
+    public void clickPlaceOrderBUtton(){
+        clickLink(PlaceOrderBUtton);
+    }
+
     private void clickLink(By element){
         driver.findElement(element).click();
     }
-
-
-
-
 }
