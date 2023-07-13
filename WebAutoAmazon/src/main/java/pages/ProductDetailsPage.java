@@ -5,8 +5,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ProductDetailsPage {
-     WebDriver driver;
+public class ProductDetailsPage extends BasePage {
+
 
     public ProductDetailsPage(WebDriver driver){
         this.driver = driver;
@@ -33,7 +33,7 @@ public class ProductDetailsPage {
         clickLink(AddToListButton);
     }
     public String getListAddedMsg(){
-        return driver.findElement(ListAddedMsg).getText();
+        return getText(ListAddedMsg);
     }
 
 
@@ -51,39 +51,37 @@ public class ProductDetailsPage {
         clickLink(AddToCartButton);
     }
     public String getAddToCartSuccessMessage(){
-        return driver.findElement(AddToCartSuccessMessage).getText();
+        return getText(AddToCartSuccessMessage);
     }
     public String getBrandName(){
-        return driver.findElement(BrandName).getText();
+        return getText(BrandName);
     }
     public String getProductTitle(){
-        return driver.findElement(ProductTitle).getText();
+        return getText(ProductTitle);
     }
     public String getProductPrice(){
-        return driver.findElement(ProductPrice).getText();
+        return getText(ProductPrice);
     }
 
     public String getAboutThisItemSection(){
-        return driver.findElement(AboutThisItemSection).getText();
+        return getText(AboutThisItemSection);
     }
     public String getCustomersAlsoViewed(){
-        return driver.findElement(CustomersAlsoViewed).getText();
+        return getText(CustomersAlsoViewed);
     }
     public String getFrequentlyBoughtTogether(){
-        return driver.findElement(FrequentlyBoughtTogether).getText();
+        return getText(FrequentlyBoughtTogether);
     }
     public String getProductDescription(){
-        return driver.findElement(ProductDescription).getText();
+        return getText(ProductDescription);
     }
-    public String getProductDetails(){ return driver.findElement(ProductDetails).getText();}
+    public String getProductDetails(){ return getText(ProductDetails);}
     public String getCustomerReviews(){
 
-     return driver.findElement(CustomerReviews).getText();
+     return getText(CustomerReviews);
         }
 
 
-    private void clickLink(By element){
-        driver.findElement(element).click();
-    }
+
 
 }

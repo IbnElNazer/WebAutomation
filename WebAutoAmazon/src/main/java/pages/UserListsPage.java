@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-public class UserListsPage {
-    private WebDriver driver;
+public class UserListsPage extends BasePage {
+
     private By CreateListButton= By.id("createList");
     private By ListNameField= By.id("list-name");
     private By CreateButton = By.id("wl-redesigned-create-list");
@@ -33,10 +33,10 @@ public class UserListsPage {
         clickLink(CreateButton);
     }
     public String getFirstListName(){
-        return driver.findElement(FirstListNameArea).getText();
+        return getText(FirstListNameArea);
     }
     public String getFirstListPrivacy(){
-        return driver.findElement(FirstListPrivacyArea).getText();
+        return getText(FirstListPrivacyArea);
     }
     public void hoverToMore(){
         Actions actions = new Actions(driver);
@@ -52,8 +52,6 @@ public class UserListsPage {
     public void clickSaveListButton(){
         clickLink(SaveListButton);
     }
-    private void clickLink(By element){
-        driver.findElement(element).click();
-    }
+
 
 }

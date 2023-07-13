@@ -5,6 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+
+
+import java.awt.image.BufferedImage;
+
 public class HomePage {
 
     private WebDriver driver;
@@ -17,6 +21,8 @@ public class HomePage {
     private By userName = By.id("nav-link-accountList-nav-line-1");
     private By userMenu = By.id("nav-tools");
     private By userlists = By.xpath("(//div/a/span[@class=\"nav-text\"])[5]");
+    private By AmazonLogo = By.id("nav-logo");
+    private By FlashSalesIMG =By.xpath("//img[@alt=\"Flash Deals\"]");
 
 
 
@@ -55,18 +61,29 @@ public class HomePage {
         return new ProductListingPage(driver);
     }
 
-    public int getIntAndReplaceComma(String price){
+    public int getIntAndReplaceComma(String price)
+    {
         int x = Integer.parseInt(price.replace(",",""));
         return x;
     }
-    public float getfloat(String rate){
-       float x =Float.parseFloat( rate.substring(0,3));
-       return  x;
+    public float getfloat(String rate)
+    {
+        float x =Float.parseFloat( rate.substring(0,3));
+        return  x;
+    }
+    public String getFlashSAlesIMG () {
+        return driver.findElement(FlashSalesIMG).getAttribute("src");
+    }
+    public WebElement getIMG () {
+        return driver.findElement(FlashSalesIMG);
+    }
+    public WebElement getAmazonLogo(){
+        return driver.findElement(AmazonLogo);
     }
     public String getPageTitle() {
         return driver.getTitle();
     }
-        public void setSearchItem(String item){driver.findElement(SearchField).sendKeys(item);}
+    public void setSearchItem(String item){driver.findElement(SearchField).sendKeys(item);}
     public void clickSearchButton(){clickLink(SearchButton);}
     public void getToDestination(String url){driver.navigate().to(url);}
     private void clickLink(By element){

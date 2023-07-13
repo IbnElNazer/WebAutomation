@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CartPage {
-    WebDriver driver;
+public class CartPage extends BasePage {
+
     public CartPage(WebDriver driver){
         this.driver = driver;
     }
@@ -46,26 +46,26 @@ public class CartPage {
         clickLink(DeleteButton);
     }
     public String getNameOfSecondItem( ){
-        return  driver.findElement(NameOfSecondItem).getText();
+        return  getText(NameOfSecondItem);
     }
     public String getNameOfFirstItem( ){
-        return  driver.findElement(NameOfFirstItem).getText();
+        return  getText(NameOfFirstItem);
     }
     public int getPriceIndividualFirstItem( ){
-        return getInt( driver.findElement(PriceIndividualFirstItem).getText());
+        return getInt( getText(PriceIndividualFirstItem));
     }
     public int getPriceIndividualSecondItem( ){
-        return getInt( driver.findElement(PriceIndividualSecondItem).getText());
+        return getInt( getText(PriceIndividualSecondItem));
     }
     public int getQtyIndicator( ){
-        return getInt( driver.findElement(QtyIndicator).getText());
+        return getInt( getText(QtyIndicator));
     }
     public int getSubtotalItems( ){
-        return getInt( driver.findElement(SubtotalItems).getText());
+        return getInt( getText(SubtotalItems));
     }
 
     public int getSubtotalPrice( ){
-       return getIntAndReplaceComma( driver.findElement(SubtotalPrice).getText());
+       return getIntAndReplaceComma( getText(SubtotalPrice));
     }
 
 
@@ -73,5 +73,5 @@ public class CartPage {
         int x = Integer.parseInt(price.replace(",",""));
         return x;
     }
-    private void clickLink(By element){driver.findElement(element).click();}
+
 }

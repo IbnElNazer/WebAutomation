@@ -10,7 +10,14 @@ import org.testng.annotations.Test;
 import pages.AddressPopup;
 import pages.LoginPage;
 import pages.UserUniquePage;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.comparison.ImageDiff;
+import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -21,39 +28,46 @@ import static org.testng.Assert.*;
 
 public class HomeTests  extends BaseTests  {
 
-
-
-
-
-    @Test
+    @Test //OK
     public void checkWebsiteName()  {
         assertEquals(homePage.getPageTitle(),"Your Souq is now Amazon.eg | Welcome to Amazon.eg in Egypt. Online Shopping for Electronics, Apparel, Beauty and Grooming, Grocery and more");
 
     }
-
-    @Test
-    public void checkLoadTimeLessThan4Seconds()  {
-
-        homePage.clickAddressButton();
-        System.out.println();
-
+    @Test // OK
+    public void checkAmazonLogoIsDisplayed(){
+      assertTrue(homePage.getAmazonLogo().isDisplayed());
+        System.out.println("Amazon logo is displayed correctly");
     }
-    @Test
+
+    @Test //OK
+    public void CheckFlashSalesIMGISDisplayed() throws IOException{
+       String Loc = homePage.getFlashSAlesIMG();
+       URL url = new URL(Loc);
+        HttpURLConnection cn = (HttpURLConnection) url.openConnection();
+        cn.setRequestMethod("GET");
+        // connection initiate
+        cn.connect();
+        int res = cn.getResponseCode();
+        //Display
+        assertEquals(res,200);
+        System.out.println("The image is displayed correctly");
+    }
+
+    @Test // OK
     public void loadTimeTest(){
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        driver = new ChromeDriver();
         long currentTime1st = System.currentTimeMillis();
+        homePage.getToDestination("https://www.amazon.eg/");
         WebDriverWait wt = new WebDriverWait(driver, Duration.ofSeconds(6));
         wt.until(ExpectedConditions.elementToBeClickable (By.id("nav-search-submit-button")));
         //capture time after page load
         long currentTime2nd = System.currentTimeMillis();
-        //compute time
+        //calculate time difference
         long netTime = Math.subtractExact(currentTime2nd,currentTime1st);
-        System.out.println(netTime);
-       assertTrue(netTime<4000);
+        assertTrue(netTime<4000);
+        System.out.println("Good load time: " + netTime/1000 +" second(s)");
 
     }
-    @Test
+    @Test //Ok
         void getStatusForWebsiteBrokenLink() throws IOException {
         driver.get("https://www.amazon.eg/-/en/sdafwqewq");
         HttpURLConnection cn = (HttpURLConnection) new URL(driver.getCurrentUrl()).openConnection();
@@ -68,7 +82,7 @@ public class HomeTests  extends BaseTests  {
             System.out.println("Http response code: " + res);
 
 }
-    @Test
+    @Test //OK
     void getStatusCodeForWebsite() throws IOException {
 
         HttpURLConnection cn = (HttpURLConnection) new URL(driver.getCurrentUrl()).openConnection();
@@ -82,6 +96,21 @@ public class HomeTests  extends BaseTests  {
         assertEquals(res,200);
         System.out.println("Http response code: " + res);
 
+    }
+    @Test //OK
+    public void checkVisualImageTest () throws IOException {
+        //Preparation of expected result of image
+        String exp = "resources/img.jpg";
+        File expi = new File(exp);
+        BufferedImage expp = ImageIO.read(expi);
+        //Preparation of actual result of image
+        URL url = new URL(homePage.getFlashSAlesIMG());
+        BufferedImage actt = ImageIO.read(url);
+        //Comparison between the two images
+        ImageDiffer imgDiff = new ImageDiffer();
+        ImageDiff diff = imgDiff.makeDiff(expp,actt);
+        //assertion for comparison difference
+       assertFalse(diff.hasDiff());
     }
 
 

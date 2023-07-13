@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.Message;
 
-public class LoginPage { //done
+public class LoginPage extends BasePage { //done
 
-    private WebDriver driver;
+
     private By emailField= By.id("ap_email");
     private By passwordField= By.id("ap_password");
     private By continueButton= By.id("continue");
@@ -20,22 +20,22 @@ public class LoginPage { //done
 
     public String getInvalidPasswordMessage() {
        String Message;
-        return Message = driver.findElement(invalidPasswordMessage).getText();
+        return Message = getText(invalidPasswordMessage);
     }
 
     public String getInvalidEmailMessage() {
         String Message;
-        return Message = driver.findElement(invalidEmailMessage).getText();
+        return Message = getText(invalidEmailMessage);
     }
 
     public String getEmptyPasswordMessage() {
         String Message;
-        return Message = driver.findElement(emptyPasswordMessage).getText();
+        return Message = getText(emptyPasswordMessage);
     }
 
     public String getEmptyEmailMessage() {
         String Message;
-        return Message = driver.findElement(emptyEmailMessage).getText();
+        return Message = getText(emptyEmailMessage);
     }
 
 
@@ -63,9 +63,7 @@ public class LoginPage { //done
 
 
 
-        private void clickLink(By element){
-            driver.findElement(element).click();
-        }
+
 
 
 }

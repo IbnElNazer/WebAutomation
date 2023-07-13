@@ -3,8 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutPage {
-    private WebDriver driver;
+public class CheckoutPage extends BasePage {
+
     public CheckoutPage(WebDriver driver){
         this.driver = driver;
     }
@@ -23,19 +23,19 @@ public class CheckoutPage {
     public String getCheckoutTitle (){return driver.findElement(CheckoutTitle).getText();
     }
     public String getEstimatedDeliveryDate (){
-        return driver.findElement(EstimatedDeliveryDate).getText();
+        return getText(EstimatedDeliveryDate);
     }
     public String getProduct1Name (){
-        return driver.findElement(Product1Name).getText();
+        return getText(Product1Name);
     }
     public int getQtyOfProduct1 (){
-        return Integer.parseInt( driver.findElement(QtyOfProduct1).getText());
+        return Integer.parseInt( getText(QtyOfProduct1));
     }
     public int geTotalPrice (){
-        return Integer.parseInt( driver.findElement(TotalPrice).getText());
+        return Integer.parseInt( getText(TotalPrice));
     }
     public int getQtyOfProduct2 (){
-        return Integer.parseInt( driver.findElement(QtyOfProduct2).getText());
+        return Integer.parseInt( getText(QtyOfProduct2));
     }
     public void clickSaveQuantitiesButton(){
         clickLink(SaveQuantitiesButton);
@@ -52,7 +52,4 @@ public class CheckoutPage {
         clickLink(PlaceOrderBUtton);
     }
 
-    private void clickLink(By element){
-        driver.findElement(element).click();
-    }
 }
