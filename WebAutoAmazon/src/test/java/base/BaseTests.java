@@ -2,13 +2,11 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.CartPage;
-import pages.CheckoutPage;
-import pages.HomePage;
+import pages.Amazon.CartPage;
+import pages.Amazon.HomePage;
 
 public class BaseTests {
 
@@ -24,7 +22,6 @@ public class BaseTests {
         driver.get("https://www.amazon.eg/-/en/");
         homePage = new HomePage(driver);
     }
-
     @AfterMethod
     public void tearDown(){
         driver.close();

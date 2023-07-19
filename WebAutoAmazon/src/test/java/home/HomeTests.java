@@ -1,17 +1,11 @@
 package home;
 
 import base.BaseTests;
+import base.BaseTests2;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AddressPopup;
-import pages.LoginPage;
-import pages.UserUniquePage;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
@@ -20,26 +14,25 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
 import static org.testng.Assert.*;
 
-public class HomeTests  extends BaseTests  {
+public class HomeTests  extends BaseTests {
 
-    @Test //OK
+    @Test (groups = "Happy") //OK
     public void checkWebsiteName()  {
         assertEquals(homePage.getPageTitle(),"Your Souq is now Amazon.eg | Welcome to Amazon.eg in Egypt. Online Shopping for Electronics, Apparel, Beauty and Grooming, Grocery and more");
 
     }
-    @Test // OK
+    @Test (groups = "Visual") // OK
     public void checkAmazonLogoIsDisplayed(){
       assertTrue(homePage.getAmazonLogo().isDisplayed());
         System.out.println("Amazon logo is displayed correctly");
     }
 
-    @Test //OK
+    @Test (groups = "Visual") //OK
     public void CheckFlashSalesIMGISDisplayed() throws IOException{
        String Loc = homePage.getFlashSAlesIMG();
        URL url = new URL(Loc);
@@ -48,12 +41,12 @@ public class HomeTests  extends BaseTests  {
         // connection initiate
         cn.connect();
         int res = cn.getResponseCode();
-        //Display
+        //assert that response code passes and equals 200
         assertEquals(res,200);
         System.out.println("The image is displayed correctly");
     }
 
-    @Test // OK
+    @Test (groups = "Happy")// OK
     public void loadTimeTest(){
         long currentTime1st = System.currentTimeMillis();
         homePage.getToDestination("https://www.amazon.eg/");
@@ -77,12 +70,12 @@ public class HomeTests  extends BaseTests  {
             cn.connect();
             //get response code
             int res = cn.getResponseCode();
-            //Display
+            //assert that response code fails and equals 404
             assertEquals(res,404);
             System.out.println("Http response code: " + res);
 
 }
-    @Test //OK
+    @Test (groups = "Happy") //OK
     void getStatusCodeForWebsite() throws IOException {
 
         HttpURLConnection cn = (HttpURLConnection) new URL(driver.getCurrentUrl()).openConnection();
@@ -92,12 +85,12 @@ public class HomeTests  extends BaseTests  {
         cn.connect();
         //get response code
         int res = cn.getResponseCode();
-        //Display
+        //assert that response code passes and equals 200
         assertEquals(res,200);
         System.out.println("Http response code: " + res);
 
     }
-    @Test //OK
+    @Test (groups = "Visual") //OK
     public void checkVisualImageTest () throws IOException {
         //Preparation of expected result of image
         String exp = "resources/img.jpg";
@@ -112,6 +105,17 @@ public class HomeTests  extends BaseTests  {
         //assertion for comparison difference
        assertFalse(diff.hasDiff());
     }
+    @Test
+    public void changeLanguageTest() throws InterruptedException {
+        homePage.clickArabicLanguage();
+        Thread.sleep(3000);
+       assertEquals(homePage.getTodayOffersInArabicText(),"عروض اليوم");
+    }
 
+    @Test (groups = "Thank you")
+    public void ThankYou() throws InterruptedException {
+        homePage.getToDestination("https://www.funimada.com/assets/images/cards/big/thank-you-26.gif");
+        Thread.sleep(20000);
+    }
 
 }

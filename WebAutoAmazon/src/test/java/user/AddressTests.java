@@ -1,10 +1,8 @@
 package user;
 
 import base.BaseTests2;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AddressPage;
-import pages.AddressPopup;
+import pages.Amazon.AddressPopup;
 
 import static org.testng.Assert.*;
 

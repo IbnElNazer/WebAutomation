@@ -1,17 +1,14 @@
-package pages;
+package pages.Amazon;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import pages.Base.BasePage;
+
+public class HomePage extends BasePage {
 
 
-
-import java.awt.image.BufferedImage;
-
-public class HomePage {
-
-    private WebDriver driver;
     private By loginButton= By.id("nav-link-accountList-nav-line-1");
 
     private By SearchField= By.id("twotabsearchtextbox");
@@ -23,6 +20,11 @@ public class HomePage {
     private By userlists = By.xpath("(//div/a/span[@class=\"nav-text\"])[5]");
     private By AmazonLogo = By.id("nav-logo");
     private By FlashSalesIMG =By.xpath("//img[@alt=\"Flash Deals\"]");
+    private By CartButton = By.id("nav-cart-count-container");
+    private By CareersButton =By.xpath("//div[@id=\"navFooter\"]//ul/li/a[@href=\"http://amazon.jobs\"]");
+    private By LanguageOptions = By.id("icp-nav-flyout");
+    private By ArabicLanguage =By.xpath("(//span[@dir=\"rtl\"])[1]");
+    private By TodayOffersInArabic =By.xpath("//a[@data-csa-c-slot-id=\"nav_cs_0\"]");
 
 
 
@@ -60,22 +62,30 @@ public class HomePage {
         clickSearchButton();
         return new ProductListingPage(driver);
     }
+    public CheckoutPage displayCheckOut() throws InterruptedException {
+        clickLink(CartButton);
+        Thread.sleep(2000);
+        CartPage ct = new CartPage(driver);
+        return ct.clickProceedTOBuyButton();
+    }
+    public CareerPage displayCareerPage(){
+        clickLink(CareersButton);
+        return new CareerPage(driver);
+    }
+    public void clickArabicLanguage() throws InterruptedException {
+        Thread.sleep(4000);
+        hoverToElement(LanguageOptions);
+        Thread.sleep(2000);
+        waiter(ArabicLanguage);
+        clickLink(ArabicLanguage);
+    }
+    public String getTodayOffersInArabicText(){
+       return getText(TodayOffersInArabic);
+    }
 
-    public int getIntAndReplaceComma(String price)
-    {
-        int x = Integer.parseInt(price.replace(",",""));
-        return x;
-    }
-    public float getfloat(String rate)
-    {
-        float x =Float.parseFloat( rate.substring(0,3));
-        return  x;
-    }
+
     public String getFlashSAlesIMG () {
         return driver.findElement(FlashSalesIMG).getAttribute("src");
-    }
-    public WebElement getIMG () {
-        return driver.findElement(FlashSalesIMG);
     }
     public WebElement getAmazonLogo(){
         return driver.findElement(AmazonLogo);
@@ -86,7 +96,5 @@ public class HomePage {
     public void setSearchItem(String item){driver.findElement(SearchField).sendKeys(item);}
     public void clickSearchButton(){clickLink(SearchButton);}
     public void getToDestination(String url){driver.navigate().to(url);}
-    private void clickLink(By element){
-        driver.findElement(element).click();
-    }
+
 }

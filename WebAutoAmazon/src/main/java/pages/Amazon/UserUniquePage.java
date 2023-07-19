@@ -1,7 +1,8 @@
-package pages;
+package pages.Amazon;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.Base.BasePage;
 
 public class UserUniquePage extends BasePage {//done
 

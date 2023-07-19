@@ -1,8 +1,8 @@
-package pages;
+package pages.Amazon;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import pages.Base.BasePage;
 
 public class CartPage extends BasePage {
 
@@ -20,7 +20,7 @@ public class CartPage extends BasePage {
     private  By NameOfSecondItem =By.xpath("(//span[@class = \"a-truncate-cut\"])[2]");
 
     private By DeselectAllButton = By.id("deselect-all"); //compare with subtotal price
-    private By ProceedTOBuyButton = By.id("sc-buy-box-ptc-button");
+    private By ProceedTOBuyButton = By.xpath("//input[@data-feature-id=\"proceed-to-checkout-action\"]");
     private By SkipButton = By.id("prime-declineCTA");
 
     private int getInt(String items){
@@ -28,17 +28,10 @@ public class CartPage extends BasePage {
         return x;
     }
     public CheckoutPage clickProceedTOBuyButton( ){
-
-         try {
-            //  Block of code to try
-             clickLink(ProceedTOBuyButton);
-
-        }
-            catch(Exception e) {
-            clickLink(SkipButton);
-        }
+        clickLink(ProceedTOBuyButton);
         return new CheckoutPage(driver);
     }
+
     public void clickDeselectAllButton( ){
         clickLink(DeselectAllButton);
     }

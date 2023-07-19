@@ -3,9 +3,8 @@ package purchase;
 import base.BaseTests;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.CheckoutPage;
-import pages.UserListsPage;
+import pages.Amazon.CartPage;
+import pages.Amazon.CheckoutPage;
 
 import static org.testng.Assert.assertEquals;
 

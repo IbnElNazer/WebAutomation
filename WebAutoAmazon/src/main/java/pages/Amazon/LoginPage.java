@@ -1,9 +1,8 @@
-package pages;
+package pages.Amazon;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.Message;
+import pages.Base.BasePage;
 
 public class LoginPage extends BasePage { //done
 

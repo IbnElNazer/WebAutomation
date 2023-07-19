@@ -1,10 +1,9 @@
 package user;
 
-import base.BaseTests;
 import base.BaseTests2;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pages.UserListsPage;
+import pages.Amazon.UserListsPage;
 
 import static org.testng.Assert.assertEquals;
 

@@ -1,12 +1,9 @@
-package pages;
+package pages.Amazon;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.ArrayList;
-import java.util.List;
+import pages.Base.BasePage;
 
 public class AddressPopup extends BasePage { //done
 

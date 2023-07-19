@@ -3,10 +3,8 @@ package user;
 import base.BaseTests;
 
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.UserUniquePage;
-
+import pages.Amazon.HomePage;
+import pages.Amazon.LoginPage;
 
 
 import static org.testng.Assert.*;
