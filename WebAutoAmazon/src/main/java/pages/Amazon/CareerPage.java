@@ -1,6 +1,7 @@
 package pages.Amazon;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import pages.Base.BasePage;
 
@@ -8,14 +9,12 @@ public class CareerPage extends BasePage {
     public CareerPage(WebDriver driver){
         this.driver = driver;
     }
-    private By LocationChecker = By.xpath("(//div[@class=\"info first col-12 col-md-8\"]/p)[1]");
-private By SearchFIeld =By.id("search_typeahead");
-    private By LocationFIeld =By.id("location-typeahead");
-    private By SearchButton =By.id("search-button");
+    private final By JobNameChecker = By.className("job-title");
+    private final By SearchField =By.xpath("(//input[@id=\"search_typeahead\"])[2]");
 
+    public void sendJobName(String job){
+        sendData(SearchField,job);
+    driver.findElement(SearchField).sendKeys(Keys.ENTER);}
+    public String getJobName (int x){ return (chooseFromListOfElements(x,JobNameChecker)).getText();}
 
-    public void sendJobName(){sendData(SearchFIeld,"Automation Engineer");}
-    public void sendJobLocation(){sendData(LocationFIeld,"Egypt");}
-    public void clickSearch(){clickLink(SearchButton);}
-    public String getLocationChecker (){return getText(LocationChecker);}
 }

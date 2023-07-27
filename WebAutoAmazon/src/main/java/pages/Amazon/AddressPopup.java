@@ -9,28 +9,24 @@ public class AddressPopup extends BasePage { //done
 
 
 
-    private By AdressElements = By.xpath("//ul[@id='GLUXAddressList']//li"); //returns a list of items
-    private By DropDownGovernateMenu =By.xpath("//a[contains(@role, 'navigation')]");
+    private final By AddressElements = By.xpath("//ul[@id='GLUXAddressList']//li"); //returns a list of items
+    private final By DropDownGovernorateMenu =By.id("GLUXCityList");
+    private final By DeliverToLocationText = By.id("glow-ingress-line2");
 
 
     public AddressPopup(WebDriver driver){
         this.driver = driver;
     }
-    public String displayGov(){
-        return getText(DropDownGovernateMenu);
-    }
-    public String getAddress(int x){
-    return chooseFromListOfElements(x,AdressElements).getText();
-}
+    public String displayLocationText() {return getText(DeliverToLocationText);}
     public void chooseAddress(int x){
-         chooseFromListOfElements(x,AdressElements).click();
+         chooseFromListOfElements(x, AddressElements).click();
+    }
+    public void selectGovernorate(int Gov)
+    {
+        Select dropdownElement = new Select(driver.findElement(DropDownGovernorateMenu));
+        dropdownElement.selectByIndex(Gov);
     }
 
-
-public void selectGovernate(int Gov){
-    Select dropdownelement = new Select(driver.findElement(DropDownGovernateMenu));
-    dropdownelement.selectByIndex(Gov);
-}
 
 
 

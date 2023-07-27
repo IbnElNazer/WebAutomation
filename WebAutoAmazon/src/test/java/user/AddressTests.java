@@ -10,13 +10,15 @@ import static org.testng.Assert.*;
 public class AddressTests extends BaseTests2 {
 
 
-    @Test
+    @Test //ok
     public void testChangeGovPopAddressTest() throws InterruptedException
     {
         AddressPopup AP = homePage.clickAddressButton();
         Thread.sleep(2000);
-        AP.selectGovernate(4);
-        System.out.println(AP.displayGov());
+        AP.selectGovernorate(5); //index number 5 represents el sharkia
+        driver.navigate().refresh();
+        Thread.sleep(2000);
+        assertEquals(AP.displayLocationText(),"Ash Sharqia");
 
     }
 
@@ -25,10 +27,13 @@ public class AddressTests extends BaseTests2 {
     {
         AddressPopup AP = homePage.clickAddressButton();
         Thread.sleep(2000);
-        AP.chooseAddress(1);
-       assertEquals(AP.getAddress(1),"vdfs - Zahraa El-maadi El-Khamsen St.");
+        AP.chooseAddress(2);
+        driver.navigate().refresh();
+        Thread.sleep(2000);
+       assertTrue(AP.displayLocationText().contains("Zahraa"));
 
     }
+
 
 
 

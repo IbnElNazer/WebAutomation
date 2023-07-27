@@ -17,7 +17,7 @@ public class BasePage {
         driver.findElement(element).click();
     }
     protected WebElement chooseFromListOfElements(int x, By element){
-        return findLinks(element).get(x);
+        return findLinks(element).get(x-1);
     }
 
     protected String getText(By element){
