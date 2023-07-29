@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Ien/Desktop/Project/dfsf/WebAutoAmazon">
+        <classes>
+            <class name="Visual.VisualTests">
+                <methods>
+                    <include name="testLogoContent"/>
+                    <include name="testLocationContent"/>
+                </methods>
+            </class>
+            <class name="home.CareerTest">
+                <methods>
+                    <include name="checkJobTest"/>
+                </methods>
+            </class>
+            <class name="home.HomeTests">
+                <methods>
+                    <include name="checkWebsiteName"/>
+                    <include name="checkAmazonLogoIsDisplayed"/>
+                    <include name="CheckFlashSalesIMGISDisplayed"/>
+                    <include name="loadTimeTest"/>
+                    <include name="getStatusForWebsiteBrokenLink"/>
+                    <include name="getStatusCodeForWebsite"/>
+                    <include name="checkVisualImageTest"/>
+                    <include name="changeLanguageTest"/>
+                    <include name="ThankYou"/>
+                </methods>
+            </class>
+            <class name="user.AddressTests">
+                <methods>
+                    <include name="testChangeGovPopAddressTest"/>
+                    <include name="testChangePopAddressTest"/>
+                    <include name="testRemoveAddressTest"/>
+                    <include name="testAddAddressTest"/>
+                    <include name="testAddAddressTestFailedName"/>
+                    <include name="testAddAddressTestFailedDistrict"/>
+                    <include name="testAddAddressTestFailedMobile"/>
+                </methods>
+            </class>
+            <class name="user.ListsTests">
+                <methods>
+                    <include name="testListCreation"/>
+                    <include name="testPrivacyModification"/>
+                </methods>
+            </class>
+            <class name="user.LoginTests">
+                <methods>
+                    <include name="testSuccessfulLogin"/>
+                    <include name="testFailedLoginInvalidPassword"/>
+                    <include name="testFailedLoginInvalidEmail"/>
+                    <include name="testFailedLoginEmptyPassword"/>
+                    <include name="testFailedLoginEmptyEmail"/>
+                </methods>
+            </class>
+            <class name="user.UserUniqueTests">
+                <methods>
+                    <include name="testTopPicksIsFound"/>
+                </methods>
+            </class>
+            <class name="product.ProductTests">
+                <methods>
+                    <include name="testPaginationBarExists"/>
+                    <include name="testPageTitle"/>
+                    <include name="testResultsHeaderShows"/>
+                    <include name="testPriceFilter400AndUp"/>
+                    <include name="testEmptySearchBarReturnsLandingPage"/>
+                    <include name="testSearchSuggestionListEqual10"/>
+                    <include name="testFirstResultName"/>
+                    <include name="checkboxFulfilledByAmazonIsCheckedTest"/>
+                    <include name="checkFulfilledByAmazonTest"/>
+                </methods>
+            </class>
+            <class name="product.ProductDetailsPageTests">
+                <methods>
+                    <include name="testAddToList"/>
+                    <include name="testBuyNow"/>
+                    <include name="testAddToCart"/>
+                    <include name="testAboutThisItemSectionIsFound"/>
+                    <include name="testBrandNameIsFound"/>
+                    <include name="testProductTitleIsFound"/>
+                    <include name="testProductPriceIsFound"/>
+                    <include name="testCustomersAlsoViewedIsFound"/>
+                    <include name="testFrequentlyBoughtTogetherIsFound"/>
+                    <include name="testProductDescriptionIsFound"/>
+                    <include name="testCustomerQAIsFound"/>
+                    <include name="testWCAG"/>
+                </methods>
+            </class>
+            <class name="purchase.CartTests">
+                <methods>
+                    <include name="testFirstProductDetailsQTYInCart"/>
+                    <include name="testFirstProductDetailsNameInCart"/>
+                    <include name="testFirstProductDetailsPriceInCart"/>
+                    <include name="testTotalPrice"/>
+                    <include name="testTotalPriceAfterDeleteItem"/>
+                    <include name="testTotalPriceAfterDeselectAll"/>
+                </methods>
+            </class>
+            <class name="purchase.CheckoutTests">
+                <methods>
+                    <include name="testCheckoutTitle"/>
+                    <include name="testQTYTotalItems"/>
+                    <include name="testUsingValuPaymentMethod"/>
+                    <include name="testQTYChangeForFirstItem"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>
