@@ -1,11 +1,11 @@
 package Visual;
 
-import base.VisualTest;
+import base.BaseVisualTest;
 import com.applitools.eyes.selenium.fluent.Target;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-public class VisualTests extends VisualTest { //All Ok
+public class VisualTests extends BaseVisualTest { //All Ok
     @Test (groups = "Visual")
     public void  testLogoContent(){
         //Baseline was made when i ran this for the first time , now it's compared against the baseline it should pass as it represents the "Logo" content

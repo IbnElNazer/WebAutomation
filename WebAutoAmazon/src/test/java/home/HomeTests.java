@@ -1,7 +1,6 @@
 package home;
 
-import base.BaseTests;
-import base.BaseTests2;
+import base.BaseTests_Credentials;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,9 +18,9 @@ import java.time.Duration;
 
 import static org.testng.Assert.*;
 
-public class HomeTests  extends BaseTests {
+public class HomeTests  extends BaseTests_Credentials {
 
-    @Test (groups = "Happy") //OK
+    @Test
     public void checkWebsiteName()  {
         assertEquals(homePage.getPageTitle(),"Your Souq is now Amazon.eg | Welcome to Amazon.eg in Egypt. Online Shopping for Electronics, Apparel, Beauty and Grooming, Grocery and more");
 
@@ -46,7 +45,7 @@ public class HomeTests  extends BaseTests {
         System.out.println("The image is displayed correctly");
     }
 
-    @Test (groups = "Happy")// OK
+    @Test
     public void loadTimeTest(){
         long currentTime1st = System.currentTimeMillis();
         homePage.getToDestination("https://www.amazon.eg/");
@@ -60,7 +59,7 @@ public class HomeTests  extends BaseTests {
         System.out.println("Good load time: " + netTime/1000 +" second(s)");
 
     }
-    @Test //Ok
+    @Test
         void getStatusForWebsiteBrokenLink() throws IOException {
         driver.get("https://www.amazon.eg/-/en/sdafwqewq");
         HttpURLConnection cn = (HttpURLConnection) new URL(driver.getCurrentUrl()).openConnection();
@@ -75,7 +74,7 @@ public class HomeTests  extends BaseTests {
             System.out.println("Http response code: " + res);
 
 }
-    @Test (groups = "Happy") //OK
+    @Test
     void getStatusCodeForWebsite() throws IOException {
 
         HttpURLConnection cn = (HttpURLConnection) new URL(driver.getCurrentUrl()).openConnection();

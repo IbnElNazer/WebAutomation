@@ -15,6 +15,7 @@ public class HomePage extends BasePage {
     private By SearchButton= By.id("nav-search-submit-button");
     private By AddressButton = By.id("nav-global-location-popover-link");
     private By UserUniquePageButton= By.id("nav-your-amazon-text");
+    private By AddressFromUser = By.id("nav_prefetch_youraddresses");
     private By userName = By.id("nav-link-accountList-nav-line-1");
     private By userMenu = By.id("nav-tools");
     private By userlists = By.xpath("(//div/a/span[@class=\"nav-text\"])[5]");
@@ -49,6 +50,11 @@ public class HomePage extends BasePage {
         clickLink(AddressButton);
         return new AddressPopup(driver);
     }
+    public AddressPage goToAddressPage(){
+        hoverToElement(userName);
+        clickLink(AddressFromUser);
+        return new AddressPage(driver);
+    }
     public UserUniquePage openUserUniquePage(){
         driver.findElement(UserUniquePageButton).click();
         return new UserUniquePage(driver);
@@ -71,6 +77,10 @@ public class HomePage extends BasePage {
     public CareerPage displayCareerPage(){
         clickLink(CareersButton);
         return new CareerPage(driver);
+    }
+    public CartPage displayCartPage(){
+        clickLink(CartButton);
+        return new CartPage(driver);
     }
     public void clickArabicLanguage() throws InterruptedException {
         Thread.sleep(4000);

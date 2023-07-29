@@ -3,13 +3,12 @@ package base;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.Amazon.CartPage;
 import pages.Amazon.HomePage;
 
-public class BaseTests2 {
+public class BaseTests_Cookies2 {
 
     public WebDriver driver;
     protected HomePage homePage;
@@ -20,7 +19,7 @@ public class BaseTests2 {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
-        driver.get("https://www.amazon.eg/-/en/");
+        driver.get("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         Thread.sleep(500);
         Cookie g = new Cookie("x-acbeg","zUOgd362zjD7DCDibpZ1TTTpHkAY0t@FpxqEBSjy9NXWnCWLXv7lN7b5@iRUJl6W");
         driver.manage().addCookie(g);

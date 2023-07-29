@@ -42,6 +42,12 @@ public class BasePage {
         driver.findElement(passwordField).sendKeys("11223344aaAA!!");
         clickLink(submitButton);
     }
+    public void sendPassword(){
+        By passwordField= By.id("ap_password");
+        By submitButton = By.id("signInSubmit");
+        driver.findElement(passwordField).sendKeys("11223344aaAA!!");
+        clickLink(submitButton);
+    }
     protected void hoverToElement(By element){
         Actions actions = new Actions(driver);
         actions.moveToElement(driver.findElement(element)).perform();

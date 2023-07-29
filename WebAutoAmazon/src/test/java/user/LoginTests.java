@@ -1,6 +1,6 @@
 package user;
 
-import base.BaseTests;
+import base.BaseTests_Credentials;
 
 import org.testng.annotations.Test;
 import pages.Amazon.HomePage;
@@ -9,7 +9,7 @@ import pages.Amazon.LoginPage;
 
 import static org.testng.Assert.*;
 
-public class LoginTests extends BaseTests { //All OK
+public class LoginTests extends BaseTests_Credentials { //All OK
 
     @Test //OK
     public void testSuccessfulLogin()  {

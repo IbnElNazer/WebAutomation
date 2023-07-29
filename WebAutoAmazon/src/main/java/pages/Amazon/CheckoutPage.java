@@ -19,7 +19,6 @@ public class CheckoutPage extends BasePage {
     private By ValuPaymentChecker = By.xpath("//div[@id=\"callouts\"]//span/span[@class=\"break-word\"]");
     private By Product1Name = By.xpath("(//div[@class=\"a-row breakword\"])[1]");
     private By PlaceOrderBUtton=By.id("is-remove-os-pabt");
-   // private By EstimatedDeliveryDate = By.className("checkout-chewbacca-contract-promise-content display-inline-block");
     private By CheckoutTitle = By.tagName("h1");
     private By ReviewOrderButton = By.id("spcViewButtonId");
     private By SaveQuantitiesButton =By.xpath("//input[@name=\"continue-bottom\"]");
@@ -27,7 +26,6 @@ public class CheckoutPage extends BasePage {
     private By QtyOfProduct =By.xpath("//span[@data-action=\"a-dropdown-button\"]//span[@class=\"a-dropdown-prompt\"]");
     private By usethisaddressButton = By.id("shipToThisAddressButton");
     private By usethispaymentButton = By.xpath("//span/input[@name=\"ppw-widgetEvent:SetPaymentPlanSelectContinueEvent\"]");
-    private By OffersSectionCreditText =By.xpath("//div[@id=\"pp-Q6QYZE-55\"]//div[@class=\"a-row\"]/span");
     private By OffersSectionButton =By.xpath("//div[@id=\"no-thanks-container\"]//button[@class=\"a-button-text a-text-center\"]");
     private By ItemsCheckoutSection = By.xpath("//div[@aria-label=\"Items and shipping\"]//h3");
 

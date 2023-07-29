@@ -1,12 +1,12 @@
 package purchase;
 
-import base.BaseTests2;
+import base.BaseTests_Cookies;
 import org.testng.annotations.Test;
 import pages.Amazon.CheckoutPage;
 
 import static org.testng.Assert.*;
 
-public class CheckoutTests extends BaseTests2 {
+public class CheckoutTests extends BaseTests_Cookies {
     @Test
     public void testCheckoutTitle() throws InterruptedException {
         CheckoutPage co = homePage.displayCheckOut();
@@ -51,6 +51,7 @@ public class CheckoutTests extends BaseTests2 {
         CheckoutPage co = homePage.displayCheckOut();
         Thread.sleep(5000);
         co.sendEmailAndPassword();
+        Thread.sleep(5000);
         co.waitForAddressButton();
         co.clickusethisaddressButton();
         Thread.sleep(6000);

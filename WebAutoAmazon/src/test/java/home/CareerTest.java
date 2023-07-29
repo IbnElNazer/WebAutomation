@@ -1,22 +1,30 @@
 package home;
 
-import base.BaseTests2;
+import base.BaseTests_Cookies;
 import static org.testng.Assert.*;
 
-import io.cucumber.java.en.Given;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.Amazon.CareerPage;
 
 
-public class CareerTest extends BaseTests2 {
+public class CareerTest extends BaseTests_Cookies {
 
-    @Test
-    public void checkJobTest() throws InterruptedException {
+    @Test (dataProvider="SearchProvider")
+    public void checkJobTest( String job , String level) throws InterruptedException {
+        CareerPage cp = homePage.displayCareerPage(); //Goes to career page
+        Thread.sleep(2000);
+        cp.sendJobName(job +" "+ level); //search for Job title
+        Thread.sleep(2000);
+        assertTrue( cp.getJobName(1).contains(job));
+    }
 
-        CareerPage cp = homePage.displayCareerPage();
-        Thread.sleep(2000);
-        cp.sendJobName("Automation Engineer");
-        Thread.sleep(2000);
-        assertTrue( cp.getJobName(1).contains("Automation"));
+    @DataProvider(name="SearchProvider") //data provider for the tests associated with it
+    public Object[][] getDataFromDataprovider(){
+        return new Object[][]
+                {
+                        { "Automation", "Engineer" },
+                        { "Vendor", "Consultant" },
+                };
     }
 }

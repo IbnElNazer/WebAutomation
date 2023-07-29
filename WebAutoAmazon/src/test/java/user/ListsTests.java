@@ -1,13 +1,13 @@
 package user;
 
-import base.BaseTests2;
+import base.BaseTests_Cookies;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import pages.Amazon.UserListsPage;
 
 import static org.testng.Assert.assertEquals;
 
-public class ListsTests extends BaseTests2 {
+public class ListsTests extends BaseTests_Cookies {
    WebDriver driver;
 
     @Test

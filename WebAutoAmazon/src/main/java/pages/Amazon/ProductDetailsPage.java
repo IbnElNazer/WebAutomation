@@ -25,6 +25,7 @@ public class ProductDetailsPage extends BasePage {
     private By CustomerReviews = By.xpath("//div[@id=\"customer-reviews_feature_div\"]//h2");
     private By AddToListButton = By.id("add-to-wishlist-button-submit");
     private By ListAddedMsg = By.xpath("(//*[@class=\"a-size-medium-plus huc-atwl-header-main\"])[1]");
+    private By AltImg =By.xpath("//div[@id=\"imgTagWrapperId\"]/img");
 
 
 
@@ -33,6 +34,9 @@ public class ProductDetailsPage extends BasePage {
     }
     public String getListAddedMsg(){
         return getText(ListAddedMsg);
+    }
+    public String getAltImg(){
+        return driver.findElement(AltImg).getAttribute("alt");
     }
 
 

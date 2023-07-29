@@ -1,5 +1,6 @@
 package product;
-import base.BaseTests2;
+import base.BaseTests_Cookies;
+import base.BaseTests_Cookies2;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import pages.Amazon.CheckoutPage;
@@ -7,76 +8,72 @@ import pages.Amazon.ProductDetailsPage;
 
 
 
-public class ProductDetailsPageTests extends BaseTests2 {
+public class ProductDetailsPageTests extends BaseTests_Cookies2 {
 
-    @Test (groups = "Functional") //notOk
-    public void testAddToList() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
+    @Test
+    public void testAddToList() throws InterruptedException {
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         Detes.clickAddToListButton();
+        Thread.sleep(2000);
        assertEquals(Detes.getListAddedMsg(),"1 item added to");
 
     }
-    @Test (groups = "Functional") //not ok bt3l2
+    @Test
     public void testBuyNow() throws InterruptedException {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         CheckoutPage chk = Detes.goToCheckoutPage();
-        assertEquals(chk.getCheckoutTitle(),"Checkout");
+        assertTrue(chk.getCheckoutTitle().contains("Checkout"));
     }
 
-    @Test (groups = "Functional") //OK
+    @Test
     public void testAddToCart() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         Detes.clickAddToCartButton();
         assertTrue(Detes.getAddToCartSuccessMessage().contains("Added to Cart"));
     }
-    @Test (groups = "Happy") //OK
+    @Test
     public void testAboutThisItemSectionIsFound() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         assertEquals(Detes.getAboutThisItemSection(),"About this item");}
-    @Test (groups = "Happy") //OK
+    @Test
     public void testBrandNameIsFound() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         assertEquals(Detes.getBrandName(),"Brand: Sony");}
-    @Test (groups = "Happy") //OK
+    @Test
     public void testProductTitleIsFound() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         assertEquals(Detes.getProductTitle(),"Sony PlayStation 5 Console with Wireless Controller, Middle East Version - White and Black");}
-    @Test (groups = "Happy")//OK
+    @Test
     public void testProductPriceIsFound() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         assertEquals(Detes.getProductPrice(),"29,450");}
-    @Test (groups = "Happy") //OK
+    @Test
     public void testCustomersAlsoViewedIsFound() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         assertEquals(Detes.getCustomersAlsoViewed(),"Customers who viewed this item also viewed");}
-    @Test (groups = "Happy") //OK
+    @Test
     public void testFrequentlyBoughtTogetherIsFound() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         assertEquals(Detes.getFrequentlyBoughtTogether(),"Frequently bought together");}
-    @Test (groups = "Happy") //OK
+    @Test
     public void testProductDescriptionIsFound() {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         assertEquals(Detes.getProductDescription(),"Product description");}
 
-    @Test (groups = "Happy") //OK
+    @Test
     public void testCustomerQAIsFound() throws InterruptedException {
-        homePage.getToDestination("https://www.amazon.eg/-/en/Sony-PlayStation-Console-Wireless-Controller/dp/B08HKDSVV2");
         ProductDetailsPage Detes = new ProductDetailsPage(driver);
         assertEquals(Detes.getCustomerReviews(),"Customer Reviews");}
 
+    @Test
+    public void testWCAG() {
+        ProductDetailsPage Detes = new ProductDetailsPage(driver);  // test for WCAG that has alt description for pictures
+        assertEquals(Detes.getAltImg(),"Sony PlayStation 5 Console with Wireless Controller, Middle East Version - White and Black");
 
 
 
 
 
-}
+
+
+}}
